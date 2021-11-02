@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<a href="/user/register.html">회원가입</a>
+<!--  method 는 생략 가능하다 default : get -->
+<!--<form action="get.jsp" method = "get">  -->
+<form action="get.jsp" method = "post">
+	<div>
+		<label for="">이름</label>
+		<input type="text" name = "username" ></input>
+	</div>
+	<div>
+		<label for="">나이</label>
+		<input type="text" name = "userage" ></input>	
+	</div>
+	<div>
+	<!--선택의 입력 형태는 value 속성으로 받는다 -->
+        <label for="gender">성별</label>
+        <input type="radio" name="gender" id="men" value="남성" checked = "checked" />남성
+        <input type="radio" name="gender" id="Female" value="여성" />여성
+      </div>
+      <div>
+        <input type="checkbox" name="fruits" id="" value="사과" />사과
+        <input type="checkbox" name="fruits" id="" value="바나나" />바나나
+        <input type="checkbox" name="fruits" id="" value="딸기" checked = "checked" />딸기
+        <input type="checkbox" name="fruits" id="" value="포도" />포도
+        <input type="checkbox" name="fruits" id="" value="수박" />수박
+        <input type="checkbox" name="fruits" id="" value="키위" />키위
+      </div>
+      <div>
+      	<input type="text" name="page1" value="15" hidden />
+      	<input type="hidden" name="bno" value="30"  />
+      </div>
+      <div>
+      <input type="button" value="제출" />
+      <input type="submit" value="제출" />
+      <input type="reset" value="초기화" />
+		</div>
+</form>
+</body>
+</html>
