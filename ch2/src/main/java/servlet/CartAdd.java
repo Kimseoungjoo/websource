@@ -1,6 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,11 +28,32 @@ public class CartAdd extends HttpServlet {
 		// cart.jsp에서 넘긴 값 가져오기
 		String product = request.getParameter("product");
 		//session 에 값 담기
+		// 세션에 담긴 장바구니 가져오기 
 		HttpSession session = request.getSession();
-		session.setAttribute("product", product);
-		// 페이지 이동
+		ArrayList<String> cartList = (ArrayList<String>)session.getAttribute("cartList");
 		
-		// 장바구니 보기 페이지 이동 
+		if(cartList!=null) {
+			cartList.add(product);
+		}else { // 새롭게 장바구니 생성
+			cartList = new ArrayList<String>();
+			cartList.add(product);
+			session.setAttribute("cartList", cartList);
+			
+		}
+		
+		
+		// 장바구니 보기 페이지 이동
+//		response.sendRedirect("../cart/basket.jsp");
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.print("<!DOCTYPE html>");
+		out.print("<html><head><meta charset=\"UTF-8\">");
+		out.print("<title>사용자 정보</title>");
+		out.print("<body>");
+		out.print("<p><a href = '/cart/cart.jsp'>상품선택</p>");
+		out.print("<p><a href = '/cart/basket.jsp'>장바구니보기</p>");
+		out.print("</body>");
+		out.print("</html>");
 	}
 
 	/**

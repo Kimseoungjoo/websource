@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,11 +11,17 @@
 <h3>장바구니 보기</h3>
 
 <%
+
 	// 세션에서 보내는거 가져오기
-	String product = (String)session.getAttribute("product");
+	//String product = (String)session.getAttribute("product");
+  	ArrayList<String> cartList = (ArrayList<String>)session.getAttribute("cartList");
 %>
 <p>
-	<%=product %>
+	<%=cartList%>
+</p>
+<p>
+	<a href = "remove.jsp">상품 비우기
+	</a>
 </p>
 </body>
 </html>
