@@ -11,7 +11,8 @@
 	String name = request.getParameter("name");
 	String gender = request.getParameter("gender");
 	String email = request.getParameter("email"); */
-
+	request.setCharacterEncoding("utf-8");
+	
 	MemberDTO dto = new MemberDTO();
 	dto.setUserid(request.getParameter("userid"));
 	dto.setPassword(request.getParameter("password"));
@@ -28,7 +29,7 @@
 	// db 작업 결과에 따라 페이지 이동
 	if(insertFlag){ //입력에 성공
 		JdbcUtil.commit(con);
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("allProcess.jsp");
 	}else { // 입력 실패
 		JdbcUtil.rollback(con);
 		response.sendRedirect("insert.jsp");		

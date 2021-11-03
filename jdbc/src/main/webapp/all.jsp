@@ -1,6 +1,11 @@
+<%@page import="user.domain.MemberDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file = "/layout/header.jsp"%>
+<%
+	List<MemberDTO> list = (List<MemberDTO>)request.getAttribute("list");
+%>
 <%-- 회원 전체 조회 하는 테이블 --%>
 <table class="table" style = "margin-top : 20px">
   <thead class="thead-light">
@@ -12,24 +17,24 @@
     </tr>
   </thead>
   <tbody>
+    <% if(!list.isEmpty()){ 
+    for(MemberDTO dto : list){ %>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
+      <th scope="row"><%=dto.getUserid() %> </th>
+      <td><%=dto.getName() %> </td>
+      <td><%=dto.getGender() %> </td>
+      <td><%=dto.getEmail() %></td>
     </tr>
   </tbody>
+  <% } //for end 
+  } // if end
+    else{
+    	out.print("<tr>");
+    	out.print("<td colspan='4'>");
+    	out.print("내용없음");
+    	out.print("</td></tr>");
+    	
+    }
+  %>
 </table>
 <%@ include file = "/layout/footer.jsp"%>
