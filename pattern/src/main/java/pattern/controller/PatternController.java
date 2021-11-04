@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import pattern.action.Action;
+import pattern.action.ActionForward;
+
 
 @WebServlet("*.do") // *do :URL은 내맘대로 변경할 수 있다.
 public class PatternController extends HttpServlet {
@@ -16,22 +19,19 @@ public class PatternController extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			String requestUri = request.getRequestURI();
-			
-			response.setContentType("text/html;charset=utf-8");
-			PrintWriter out = response.getWriter();
-			out.print("requestURI " +requestUri);
-			
-			if(requestUri.equals("/insert.do")) {
-			       out.print("insert.jsp가 보낸값");
-		      } else if (requestUri.equals("/update.do")) {
-		         out.print("update.jsp가 보낸 값");
-		      } else if (requestUri.equals("/index.do")) {
-		         out.print("index.jsp가 보낸 값");
-		         
-		      }
-
+		request.setCharacterEncoding("utf-8");	
 		
+		   String requestUri = request.getRequestURI();
+			
+			ActionFactory af = ActionFactory.getInstance();
+			Action action = af.action(requestUri);
+			
+			ActionForward actionForward = null;
+			try {
+				actionForward = action.excute(request);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 	}
 	
 	
