@@ -8,7 +8,7 @@
 <%
 	//serch.jsp 넘긴 값 가져오기 
 	String criteria = request.getParameter("criteria");
-	String keyword = request.getParameter("keycode");
+	String keyword = request.getParameter("keyword");
 	
 	//db작업 
 	Connection con = JdbcUtil.getConnection();

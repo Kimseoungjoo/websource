@@ -1,3 +1,5 @@
+<%@page import="book.domain.BookDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -33,7 +35,7 @@
 	String tab = request.getParameter("tab");
 	
 	if(tab==null){
-		tab = "all";
+		tab = "search";
 	}
 %>
 <script>
@@ -62,8 +64,7 @@
   </div>
   <div class="col-8">
     <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="list-all-list">
-		<%@include file="/view/all.jsp" %>
+      <div class="tab-pane fade" id="all" role="tabpanel" aria-labelledby="list-all-list">
 	  </div>
       <div class="tab-pane fade" id="insert" role="tabpanel" aria-labelledby="list-insert-list">
       		<%@include file="/view/insert.jsp" %>
@@ -74,12 +75,47 @@
       <div class="tab-pane fade" id="modify" role="tabpanel" aria-labelledby="list-modify-list">
       		<%@include file="/view/modify.jsp" %>
       </div>
+      <%
+      	List<BookDTO> searchList = (List<BookDTO>)request.getAttribute("list");
+      	if(searchList.isEmpty()){
+      %>
       <div class="tab-pane fade" id="search" role="tabpanel" aria-labelledby="list-search-list">
       		<%@include file="/view/search.jsp" %>
       </div>
+      <%}else { %>
+      <table class="table" style = "margin-top : 20px">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">code</th>
+      <th scope="col">title</th>
+      <th scope="col">writer</th>
+      <th scope="col">price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%
+    	for(BookDTO dto : searchList){
+    %>
+    <tr>
+      <th scope="row"><%=dto.getCode() %></th>
+      <td> <%=dto.getTitle() %></td>
+      <td><%=dto.getWriter() %></td>
+      <td><%=dto.getPrice() %></td>
+    </tr>
+    <%} %>
+  </tbody>
+  </table>
+      
+      <% }%>
     </div>
   </div>
 </div>
 </div>
+<script>
+	$('#list-tab a[href="#all"]').click(function() {
+		location.href = "/index.jsp?tab=all";
+	})
+</script>
+
 </body>
 </html>
