@@ -3,7 +3,8 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="book.domain.BookDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> <!-- JSP 파일안 항상 상단에 이 문장이 꼭있어야한다 -->
+    pageEncoding="UTF-8"%> 
+<!-- JSP 파일안 항상 상단에 이 문장이 꼭있어야한다 -->
 
 <%
 	request.setCharacterEncoding("utf-8");
@@ -21,13 +22,12 @@
 	boolean insertFlag = dao.insert(insertDto);
 	
 	//페이지 이동
-	String path = "";
+	String path = "/index.jsp";
 	if(insertFlag){
 		JdbcUtil.commit(con);
-		path = "/index.jsp";
 	}else {
-		JdbcUtil.rollback(con);	
-		path = "/index.jsp";
+		JdbcUtil.rollback(con);
+		path += "?tab=insert";
 	}
 	JdbcUtil.close(con);
 	response.sendRedirect(path);

@@ -10,5 +10,5 @@ insert into bookTBL values('1002', '이것이 오라클이다', '오재남',2900
 insert into bookTBL values('1003', '자바의 신', '강신용',30000);
 insert into bookTBL values('1004', '자바 1000제', '김용만',26000);
 insert into bookTBL values('1005', 'spring', '이민호',34000);
-
+-- 검색
 

@@ -13,14 +13,14 @@
 	boolean deleteFlag = dao.delete(code);
 	
 	// 페이지 넘기기
-	String path = "";
+	String path = "/index.jsp";
 	
 	if(deleteFlag){
 		JdbcUtil.commit(con);
-		path = "/index.jsp";
+		path += "?tab=all";
 	}else{
 		JdbcUtil.rollback(con);
-		path = "/index.jsp?tab=delete";
+		path += "?tab=delete";
 	}
 		JdbcUtil.close(con);
 		response.sendRedirect(path);

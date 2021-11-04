@@ -15,14 +15,14 @@
 	boolean updateFlag = dao.update(code, price);
 	
 	//페이지 이동
-	String path = "";
+	String path="/index.jsp";
 	
 	if(updateFlag){
 		JdbcUtil.commit(con);
-		path ="/index.jsp";
+		path +="?tab=all";
 		}else{
 		JdbcUtil.rollback(con);
-		path ="/index.jsp?tab=modify";
+		path +="?tab=modify";
 	}
 	JdbcUtil.close(con);
 		response.sendRedirect(path);

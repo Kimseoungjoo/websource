@@ -139,4 +139,37 @@ public class BookDAO {
 		
 		return bookList;
 	}
+	// search/select 구문
+	public List<BookDTO> search(String criteria,String keyword){
+		List<BookDTO> list = new ArrayList<BookDTO>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		
+		try {
+			String sql = "select * from bookTBL where "+criteria+"=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, keyword);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				BookDTO dto = new BookDTO();
+				dto.setCode(rs.getString("code"));
+				dto.setTitle(rs.getString("title"));
+				dto.setWriter(rs.getString("writer"));
+				dto.setPrice(rs.getInt("price"));
+				
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return list;
+	}
+	
 }
