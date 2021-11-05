@@ -8,7 +8,7 @@
 </head>
 <body>
 <p>
-	<a href="/insert.do">삽입</a>
+	<a href="/insert.do?no=10">삽입</a>
 </p>
 </body>
 </html>

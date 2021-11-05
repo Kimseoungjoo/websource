@@ -12,6 +12,6 @@ import lombok.Setter;
 public class ActionForward {
 	// 이동경로와 이동 방식을 저장 하는 클래스 
 	private String path;
-	private boolean redirect;
+	private boolean redirect; // true(sendRedirect방식), false(forward방식) 으로 보내겠다
 	
 }

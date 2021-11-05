@@ -22,11 +22,11 @@ public class ActionFactory {
 	public Action action(String cmd) {
 		
 		if(cmd.equals("/insert.do")) {
-			action = new InsertAction();
+			action = new InsertAction("/view/insert.jsp");
 		} else if (cmd.equals("/update.do")) {
-
+			
 	      } else if (cmd.equals("/index.do")) {
-	         
+	    	  
 	      }
 		return action;
 	}

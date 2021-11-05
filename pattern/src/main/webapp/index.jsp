@@ -14,7 +14,20 @@
 	<a href="/view/insert.jsp">삽입하기</a>
 </p>
 <p>
-	<a href="/view/update.jsp">수정하기</a>
+	<!-- <a href="/view/update.jsp">수정하기</a> -->
+	<form action="/insert.do" method = "post">
+		<div>
+			<label for="userid">아이디</label>
+			<input type="text" name = "userid" id="userid" />
+		</div>
+		<div>
+			<label for="password">아이디</label>
+			<input type="password" name = "password" id="password" />
+		</div>
+		<div>
+			<button type ="submit">보내기</button>
+		</div>
+	</form>
 </p>
 </body>
 </html>
