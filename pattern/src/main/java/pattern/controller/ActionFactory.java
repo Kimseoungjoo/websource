@@ -1,7 +1,7 @@
 package pattern.controller;
 
 import pattern.action.Action;
-import pattern.action.InsertAction;
+import pattern.action.LoginAction;
 
 public class ActionFactory {
 	
@@ -20,9 +20,9 @@ public class ActionFactory {
 	Action action = null;
 	
 	public Action action(String cmd) {
-		
-		if(cmd.equals("/insert.do")) {
-			action = new InsertAction("/view/insert.jsp");
+		// action 작업이 성공하면 움직일 페이지 기록 
+		if(cmd.equals("/login.do")) {
+			action = new LoginAction("/index.jsp");
 		} else if (cmd.equals("/update.do")) {
 			
 	      } else if (cmd.equals("/index.do")) {

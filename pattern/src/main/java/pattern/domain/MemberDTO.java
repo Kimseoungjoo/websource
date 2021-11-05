@@ -11,7 +11,11 @@ import lombok.ToString;
 @Setter
 @Getter
 public class MemberDTO {
-	 private String userid;
+	 public MemberDTO(String userid, String password) {
+		 this.userid = userid;
+		 this.password= password;
+	}
+	private String userid;
 	   private String password;
 	   private String changePassword;
 	   private String name;

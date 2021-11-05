@@ -39,6 +39,10 @@ public class PatternController extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		//로그인이 실패가 됐을 떄 new AciontForward("/veiw/login.jsp",true);
+				//로그인이 성공했을 떄 new AciontForward("/index.jsp",true);
+		
+		
 		// 념겨받은 ActionForward가 가지고 있는 값에 따라서 페이지 이동
 		if(actionForward.isRedirect()) {
 			response.sendRedirect(actionForward.getPath());
