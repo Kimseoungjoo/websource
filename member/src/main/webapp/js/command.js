@@ -11,6 +11,7 @@ $(function(){
 		location.href = "/logout.do";
 	})
 	$("#leave").click(function(){
-		
+		// 탈퇴 
+		location.href = "../view/leaveForm.jsp";
 	})
 })

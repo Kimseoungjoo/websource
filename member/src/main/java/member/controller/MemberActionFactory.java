@@ -1,7 +1,9 @@
 package member.controller;
 
 import member.action.Action;
+import member.action.LeaveAction;
 import member.action.LoginAction;
+import member.action.LogoutAction;
 
 public class MemberActionFactory {
 	//singleton 객체 생성
@@ -20,6 +22,10 @@ public class MemberActionFactory {
 		
 		if(cmd.equals("/login.do")) {
 			action = new LoginAction("/view/loginForm.jsp");
+		}else if(cmd.equals("/logout.do")) {
+			action = new LogoutAction("/index.jsp");
+		}else if(cmd.equals("/leave.do")) {
+			action = new LeaveAction("/index.jsp");			
 		}
 		
 		return action;
