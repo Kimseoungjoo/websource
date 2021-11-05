@@ -17,7 +17,7 @@
 			<input type="text" name = "userid" id="userid" />
 		</div>
 		<div>
-			<label for="password">아이디</label>
+			<label for="password">비밀번호</label>
 			<input type="password" name = "password" id="password" />
 		</div>
 		<div>
