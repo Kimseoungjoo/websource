@@ -3,7 +3,7 @@
  */
 $(function(){
 	$("#modify").click(function(){
-		
+		location.href = "../view/modifyForm.jsp";
 	})
 	
 	$("#logout").click(function(){

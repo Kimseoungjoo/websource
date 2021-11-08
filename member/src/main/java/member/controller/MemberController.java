@@ -27,6 +27,8 @@ public class MemberController extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String cmd = requestUri.substring(contextPath.length());
 		
+		System.out.println(contextPath);
+		
 		//Uri 에 따라 액션 생성
 		MemberActionFactory maf = MemberActionFactory.getInstance();
 		Action action = maf.action(cmd);
