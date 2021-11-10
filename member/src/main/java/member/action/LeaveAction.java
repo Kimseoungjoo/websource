@@ -27,8 +27,6 @@ public class LeaveAction implements Action {
 		}else {
 			path = "/view/leaveForm.jsp";
 		}
-		
 		return  new ActionForward(path,true);
 	}
-
 }

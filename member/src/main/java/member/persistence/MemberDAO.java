@@ -115,4 +115,37 @@ public class MemberDAO {
 		return updateFlag;
 	}
 	
+	// 회원가입 메소드
+	public boolean register(MemberDTO dto) {
+		boolean registerFlag = false;
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			String sql = "insert into member values(?,?,?,?,?)";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getUserid());
+			pstmt.setString(2, dto.getPassword());
+			pstmt.setString(3, dto.getName());
+			pstmt.setString(4, dto.getGender());
+			pstmt.setString(5, dto.getEmail());
+			
+			int result = pstmt.executeUpdate();
+			
+			if(result>0) registerFlag = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				close(pstmt);
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return registerFlag;
+	}
+	
 }
