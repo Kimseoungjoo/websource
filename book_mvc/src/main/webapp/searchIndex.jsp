@@ -2,6 +2,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,14 +76,20 @@
       <div class="tab-pane fade" id="modify" role="tabpanel" aria-labelledby="list-modify-list">
       		<%@include file="/view/modify.jsp" %>
       </div>
-      <%
+     <%--  <%
       	List<BookDTO> searchList = (List<BookDTO>)request.getAttribute("list");
       	if(searchList.isEmpty()){
       %>
       <div class="tab-pane fade" id="search" role="tabpanel" aria-labelledby="list-search-list">
       		<%@include file="/view/search.jsp" %>
       </div>
-      <%}else { %>
+      <%}else { %> --%>
+      <c:if test="${empty list}">
+    	   <div class="tab-pane fade" id="search" role="tabpanel" aria-labelledby="list-search-list">
+      			<%@include file="/view/search.jsp" %>
+     	 </div>
+      	</c:if>
+      	<c:if test="${!empty list}">
       <table class="table" style = "margin-top : 20px">
   <thead class="thead-light">
     <tr>
@@ -93,20 +100,21 @@
     </tr>
   </thead>
   <tbody>
-    <%
+    <%--
     	for(BookDTO dto : searchList){
-    %>
+    --%><c:forEach var="dto" items="${list}">
     <tr>
-      <th scope="row"><%=dto.getCode() %></th>
-      <td> <%=dto.getTitle() %></td>
-      <td><%=dto.getWriter() %></td>
-      <td><%=dto.getPrice() %></td>
+      <th scope="row">${dto.code}</th>
+      <td> ${dto.title}</td>
+      <td>${dto.writer}</td>
+      <td>${dto.price}</td>
     </tr>
-    <%} %>
+    </c:forEach>
+    <%--} --%>
   </tbody>
   </table>
-      
-      <% }%>
+      </c:if>
+      <%-- }--%>
     </div>
   </div>
 </div>
