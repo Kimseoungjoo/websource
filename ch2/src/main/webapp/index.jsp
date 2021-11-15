@@ -12,7 +12,10 @@
 	<h2>index</h2>
 	<div class="row">
 	</div>
-	<div class = "col-8"></div>
+	<div class = "col-8">
+	left
+	<a href="./register.jsp">회원가입</a>
+	</div>
 	<div class="col-4">
 	<form action="/member/loginProcess.jsp" method = "post">
   <div class="form-group">
@@ -29,4 +32,5 @@
 	</div>
 </div>
 </body>
+
 </html>

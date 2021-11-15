@@ -10,6 +10,16 @@ $(function(){
       userid: {
         required: true,
         validId: true,
+		remote : { // ajax 기술 확인
+			url:"/dupId.do",
+			type: "post",
+			data:{
+				userid:function(){
+					return $("#userid").val();
+				}
+			}
+			
+		}
       },
       password: {
         required: true,
@@ -35,6 +45,7 @@ $(function(){
     messages: {
       userid: {
         required: "아이디는 필수요소입니다.",
+		remote: "이 아이디는 사용중입니다."
       },
       password: {
         required: "비밀번호를 필수 입력 요소입니다",

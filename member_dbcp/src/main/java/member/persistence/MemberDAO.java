@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 
 import member.domain.MemberDTO;
 import member.domain.UpdateDTO;
+import oracle.jdbc.proxy.annotation.Pre;
 
 // 클래스 안의 메소드가 static 으로만 구성되어 있다면
 // import를 static 으로 하는 것이 가능함 
@@ -146,6 +147,34 @@ public class MemberDAO {
 		}
 		
 		return registerFlag;
+	}
+	// 아이디 중복 검사 
+	public boolean dupId(String userid) {
+		PreparedStatement pstmt = null;
+		boolean dupIdFlag = true;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select * from member where userid=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			
+			rs= pstmt.executeQuery();
+			if(rs.next()) {
+				dupIdFlag = false;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				close(pstmt);
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return dupIdFlag;
+		
 	}
 	
 }
