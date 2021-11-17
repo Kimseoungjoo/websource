@@ -20,13 +20,11 @@
 	// Download via browser 브라우저를 통해서 다운로드
 	// MIME 타입 --------------
 	response.setContentType("application/octet-stream"); 
-	
 	// 한글파일명 원래대로 변경 
 	// url에 붙은 한글은 인코딩이 자동으로 일어남
 	fileName = new String(fileName.getBytes("utf-8"),"iso-8859-1");
 	
 	response.setHeader("Content-Disposition", "attachment;fileName="+fileName);
-	
 	//-------------------------
 	// 읽어온 파일을 클라이언트 브라우저로 전송
 	BufferedOutputStream bos = new BufferedOutputStream(response.getOutputStream());
