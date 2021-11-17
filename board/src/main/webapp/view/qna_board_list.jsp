@@ -26,7 +26,14 @@
 			<c:forEach var="dto" items="${list}">
 			<tr><%-- 리스트 목록 보여주기 --%>
 				<td class='text-center'>${dto.bno}</td><!--번호-->
-				<td><a href="/countUpdate.do?bno=${dto.bno}">${dto.title}</a></td><!--제목-->
+				<td>
+				<c:if test="${dto.re_lev!=0}">
+					<c:forEach begin="0" end="${dto.re_lev*1}">
+						&nbsp;
+					</c:forEach>
+				</c:if>
+					<a href="/countUpdate.do?bno=${dto.bno}">${dto.title}</a>
+				</td><!--제목-->
 				<td class='text-center'>${dto.name}</td><!--작성자-->
 				<td class='text-center'>${dto.regdate}</td><!--날짜-->
 				<td class='text-center'>${dto.readcount}<span class="badge badge-pill badge-primary"></span></td>

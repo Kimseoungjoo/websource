@@ -16,9 +16,15 @@ $(function(){
 		formObj.attr("action", "/view/qna_board_pwdCheck.jsp");
 		formObj.submit();
 	})
+	
 	// 수정버튼 클릭시 
 	$("#modify").click(function(){
 		formObj.attr("action", "/modify.do");
+		formObj.submit();
+	})
+	
+	$("#reply").click(function(){
+		formObj.attr("action", "/replyView.do");
 		formObj.submit();
 	})
 })
