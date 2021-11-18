@@ -50,18 +50,52 @@ insert into board(bno, title, content, password, attach, name, re_ref, re_lev, r
 
 select bno,title,re_ref,re_seq,re_lev from board where re_ref=1736 order by re_seq;
 
+select * from BOARD order by re_lev acs where bno = 1;
+select * from BOARD where name like '%게시판%';
+select * from BOARD where content like '%게시판%';
+select * from BOARD where title like '%인코딩%';
+
+-- pageShared 페이지 나누기 
+-- rownum : 가상컬럼(임시값) - 조회된 결과 행에 번호를 매기는 것
+select rownum, bno, title from board order by bno desc;
+
+-- select rownum, bno, title from board where rownum>10; 로우넘은 결과가 다끝난 다음에 rownum
+select rownum, bno, title from board where rownum<=10;
+
+select rownum, bno, title from board where rownum<=10 order by bno desc;
+
+-- rownum 과 order by 쓸때 주의점 
+-- 출력된 결과에 rownum을 붙히는 개념 
+-- 정렬을 한 후 번호를 매기지 않는다.
+select rownum, bno, title from board where rownum<=10 order by re_ref desc, re_seq asc;
+
+-- inline(인라인) Query(쿼리)의 개념으로 작성을 해야한다.
+select rownum, bno, title from(select bno,title from board where bno>0 order by re_ref desc, re_seq asc) where rownum<=10;
 
 
 
+-- 1 click => 최신글 10개를 가져오기 (1~10)
+select rnum, bno, title from(select rownum rnum, A.* from
+(select bno,title from board where bno>0 order by re_ref desc, re_seq asc) A
+where rownum<=10) where rnum>0;
+-- 2 click => 최신글 10개를 가져오기 (10~20
+select rnum, bno, title from(select rownum rnum, A.* from
+(select bno,title from board where bno>0 order by re_ref desc, re_seq asc) A
+where rownum<=20) where rnum>10;
 
+-- 3 click => 그 다음 최신글 10개를 가져오기(1~30 => 20~30)
+select rnum, bno, title from 
+(select rownum rnum, A.* 
+from
+(select bno,title from board where bno>0 and title like '%인코딩%' order by re_ref desc, re_seq asc) A 
+where rownum<=30)
+where rnum>20;
+-- 1 2 3 4 5 6 7 8
 
+-- 1 (10,0) : 1*10 (1-1)*10  *10 : 한페이지에 보여줄 게시글 갯수 
+-- 2 (20,10) : 2*10 (2-1)*10
+-- 3 (30,20)
 
-
-
-
-
-
-
-
+select count(*) from board;
 
 
