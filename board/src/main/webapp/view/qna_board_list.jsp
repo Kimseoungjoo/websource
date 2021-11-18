@@ -8,10 +8,22 @@
 			<h3 class="box-title">List Board</h3>
 		</div>
 		<div class="row">
-			<div class="col-md-4"></div>
-			<!--글쓰기 버튼-->
-			<button type="button" class = "btn btn-success" onclick="location.href='/view/qna_board_write.jsp'">새글작성</button>
-			<div class="col-md-4 offset-md-4"><!--검색 들어갈 부분-->
+			<div class="col-md-4">
+				<!--글쓰기 버튼-->
+				<button type="button" class = "btn btn-success" onclick="location.href='/view/qna_board_write.jsp'">새글작성</button>
+			</div>
+			<div class="col-md-4 offset-md-4">
+				<!--검색 들어갈 부분-->
+				<form action="/search.do" method="post" id="search">
+					<select name="criteria" id="">
+						<option value="n">--------------</option>
+						<option value="title">title</option>
+						<option value="content">content</option>
+						<option value="name">name</option>
+					</select>
+					<input type="text" name="keyword" id="" />
+					<button type="button" class ="btn btn-primary">검색</button>
+				</form>
 			</div>
 		</div>
 		<br>
@@ -52,4 +64,5 @@
 		<div style="height:20px"></div>
 	</div>
 </section>
+	<script src="/js/list.js"></script>
 <%@include file="../include/footer.jsp"%>

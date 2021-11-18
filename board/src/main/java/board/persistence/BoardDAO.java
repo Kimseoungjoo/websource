@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import board.domain.BoardDTO;
+import board.domain.SearchDTO;
 
 import static board.domain.JdbcUtil.*;
 
@@ -286,5 +287,25 @@ public class BoardDAO {
 			}
 		}
 		return insertFlag;
+	}
+	
+	// 검색한 내용 list 보내기 
+	public List<BoardDTO> searchList(SearchDTO searchDto){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<BoardDTO> list= new ArrayList<BoardDTO>();
+		try {
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				close(rs);
+				close(pstmt);
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return list;
 	}
 }
