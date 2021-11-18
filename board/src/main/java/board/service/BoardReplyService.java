@@ -21,9 +21,6 @@ public class BoardReplyService {
 		}else {
 			rollback(con);
 		}
-	
-			
-		
 		close(con);
 		return insertFlag;
 	}

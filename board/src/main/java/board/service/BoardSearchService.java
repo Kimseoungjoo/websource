@@ -13,9 +13,11 @@ public class BoardSearchService {
 	public List<BoardDTO> search(SearchDTO searchDto){
 		Connection con = getConnection();
 		BoardDAO dao = new BoardDAO(con);
+		
 		List<BoardDTO> list = dao.searchList(searchDto);
 		
 		close(con);
+		
 		return list;
 		
 	}

@@ -293,8 +293,9 @@ public class BoardDAO {
 	public List<BoardDTO> searchList(SearchDTO searchDto){
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		List<BoardDTO> list= new ArrayList<BoardDTO>();
+		List<BoardDTO> list = new ArrayList<BoardDTO>();
 		try {
+			String sql = "select from board where title ='%?%'";
 			
 		} catch (Exception e) {
 			e.printStackTrace();
