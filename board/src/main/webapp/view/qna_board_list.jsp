@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="col-md-4">
 				<%--글쓰기 버튼--%>
-				<button type="button" class = "btn btn-success" onclick="location.href='/view/qna_board_write.jsp'">새글작성</button>
+				<button type="button" class = "btn btn-success">새글작성</button>
 			</div>
 			<div class="col-md-4 offset-md-4">
 				<%--검색 들어갈 부분--%>

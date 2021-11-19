@@ -1,5 +1,6 @@
 package board.action;
 
+import java.net.URLEncoder;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +28,14 @@ public class BoardInsertAction implements BoardAction {
 		dto.setName(map.get("name"));
 		dto.setContent(map.get("content"));
 		dto.setPassword(map.get("password"));
+		// 페이지 나누기 후 추가 
+		
+		String page = map.get("page");
+		String amount = map.get("amount");		
+		String criteria = map.get("criteria");
+		String keyword = URLEncoder.encode(map.get("keyword"),"utf-8");
+				
+		// -------------------------------------------------------
 		
 		// 파일 첨부 
 		dto.setAttach(map.get("attach"));
@@ -37,6 +46,9 @@ public class BoardInsertAction implements BoardAction {
 		
 		if(!insertFlag) {
 				path = "view/qna_board_write.jsp";
+				path += "?page="+page+"&amount="+amount+"&criteria="+criteria+"&keyword="+keyword;
+		}else {
+			path+="?page="+page+"&amount="+amount+"&criteria="+criteria+"&keyword="+keyword;
 		}
 		return new BoardActionForward(path,true);
 	}

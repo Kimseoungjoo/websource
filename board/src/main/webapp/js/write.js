@@ -3,7 +3,9 @@
  */
 $(function(){
 	$("#list").click(function(){
-		location.href='/list.do';
+		/*location.href='list.do';*/
+		$("#actionForm").attr("action", "/list.do"); 
+		$("#actionForm").submit();
+		
 	})
-	
 })

@@ -2,6 +2,17 @@
  *  qna_board_list.jsp 와 관련있는 script
  */
 $(function(){
+	// 새글 작성 클릭 시  actionForm을 보낸당
+	// onclick ="location.href='view/qna_board_write.jsp'"
+	$(".btn-success").click(function(){
+		$("#actionForm").find("[name='bno']").remove();
+		$("#actionForm").attr("action", "/view/qna_board_write.jsp"); 
+		$("#actionForm").attr("method", "get"); 
+		
+		$("#actionForm").submit();
+		
+	})
+	
 	// 제목을 클릭하면 actionForm을 보내면 된다 .
 	$(".count").click(function(e){
 		e.preventDefault(); // a태그 움직임 방지 
@@ -9,6 +20,7 @@ $(function(){
 		let href = $(this).attr('href'); // a태그가 가지고 있는 href 속성 가져오기
 		
 		$("#actionForm").find("[name='bno']").val(href);
+		
 		//$("#actionForm").append("<input type='hidden' name='bno' value='"+href+"'>"); //정산코드
 		$("#actionForm").attr("action","/countUpdate.do");
 		
@@ -22,7 +34,7 @@ $(function(){
 		
 		let href = $(this).attr('href'); // a태그가 가지고 있는 href 속성 가져오기 
 		
-		$("#actionForm").fine("[name='bno']").remove();
+		$("#actionForm").find("[name='bno']").remove();
 		$("#actionForm").find("[name='page']").val(href); // form에 page에 변
 		$("#actionForm").submit();
 	})
