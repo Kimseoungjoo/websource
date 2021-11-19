@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp"%>
@@ -17,6 +18,11 @@
 					<button type="submit" class="btn btn-primary">확인</button>
 				</div>
 			</div>
+			<input type="hidden" name="page"  value='<%=request.getParameter("page")%>'/>
+			<input type="hidden" name="amount"  value='<%=request.getParameter("amount")%>'/>
+			<input type="hidden" name="criteria"  value='<%=request.getParameter("criteria")%>'/>
+			<% String keyword = URLEncoder.encode(request.getParameter("keyword"), "utf-8");%>
+			<input type="hidden" name="keyword"  value='<%=keyword%>'/>
 			<input type="hidden" name="bno" value='<%=request.getParameter("bno")%>'/>
 		</form>
 	</div>

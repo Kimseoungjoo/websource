@@ -1,3 +1,4 @@
+<%@page import="java.net.URLDecoder"%>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="board.domain.BoardDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -67,8 +68,13 @@
 				</div>
 				<div style="height:20px"></div>
 			</div>
-		<input type="hidden" name="bno" value="${dto.bno}" />
+				<input type="hidden" name="page"  value="${pageDto.page}"/>
+				<input type="hidden" name="amount"  value="${pageDto.amount}"/>
+				<input type="hidden" name="criteria"  value="${pageDto.searchDto.criteria}"/>
+				<input type="hidden" name="keyword"  value="${pageDto.searchDto.keyword}"/>
+				<input type="hidden" name="bno" value="${dto.bno}" />
 		</form>
 	</div>
 </section>
+
 <%@include file="../include/footer.jsp"%>

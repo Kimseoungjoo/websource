@@ -9,7 +9,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor //default 생성자
 @ToString
 // 페이지 나누기와 관련된 정보 
 public class PageDTO {
